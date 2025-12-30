@@ -1,0 +1,17 @@
+{% extends ".html" %}
+{% block title %}
+tea and comment
+
+{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center text-white mt-4">
+    are you sure to delete comment
+</h1>
+<form method="POST">
+    {{% csrf_token %}}
+    <button class="btn btn-danger">delete</button>
+    <a class="btn btn-successs" href="{% url 'comment_list' %}"> cancel</a>
+</form>
+{% endblock %}

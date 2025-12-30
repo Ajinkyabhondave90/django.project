@@ -1,0 +1,29 @@
+{% extends ".html" %}
+{% block title %}
+tea and comment
+
+{% endblock %}
+
+
+{% block content %}
+<h1 class="text-center text-white mt-4">
+    welcome to django project
+</h1>
+<a class="btn btn-primary mb-4" href="{% url  'comment_create' %}"> create a comment</a>
+<div class="container row gap-3">
+    {% for comment in comments  %}
+    <div class="card" style="width: 18rem;">
+  <img src="{{comment.photo.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{comment.user.username}}</h5>
+    <p class="card-text">{{comment.text}}</p>
+    {% if comment.user == user %}
+    <a href="{% url 'comment_edit' comment.id%}" class="btn btn-primary">edit</a>
+    <a href="{% url 'comment_delete' comment.id%}" class="btn btn-danger">delete</a>
+    {% endif %}
+  </div>
+</div>
+    {% endfor %}
+
+</div>
+{% endblock %}
